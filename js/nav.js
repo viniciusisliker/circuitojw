@@ -15,7 +15,6 @@
     item.path.replace("/index.html", "").toLowerCase()
   );
 
-  /** Usa o caminho do próprio script (ex: ../js/nav.js → ../) como base confiável. */
   function getRootPrefix() {
     const script = document.querySelector('script[src*="nav.js"]');
     if (!script) return "./";
@@ -29,11 +28,70 @@
     const path = window.location.pathname.replace(/\\/g, "/").toLowerCase();
 
     if (itemPath === "index.html") {
-      return !SECTIONS.some((section) => path.includes("/" + section + "/"));
+      const onSection = SECTIONS.some((section) => {
+        return path.includes("/" + section + "/") || path.endsWith("/" + section);
+      });
+      return !onSection;
     }
 
     const section = itemPath.replace("/index.html", "").toLowerCase();
-    return path.includes("/" + section + "/");
+    return path.includes("/" + section + "/") || path.endsWith("/" + section);
+  }
+
+  function closeMenu(nav) {
+    nav.classList.remove("site-nav--open");
+    const toggle = nav.querySelector(".site-nav__toggle");
+    const backdrop = nav.querySelector(".site-nav__backdrop");
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Abrir menu de navegação");
+    }
+    if (backdrop) backdrop.hidden = true;
+    document.body.classList.remove("nav-open");
+  }
+
+  function openMenu(nav) {
+    nav.classList.add("site-nav--open");
+    const toggle = nav.querySelector(".site-nav__toggle");
+    const backdrop = nav.querySelector(".site-nav__backdrop");
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Fechar menu de navegação");
+    }
+    if (backdrop) backdrop.hidden = false;
+    document.body.classList.add("nav-open");
+  }
+
+  function setupMenu(nav) {
+    const toggle = nav.querySelector(".site-nav__toggle");
+    const backdrop = nav.querySelector(".site-nav__backdrop");
+    const links = nav.querySelectorAll(".site-nav__links a");
+
+    if (!toggle) return;
+
+    toggle.addEventListener("click", () => {
+      if (nav.classList.contains("site-nav--open")) {
+        closeMenu(nav);
+      } else {
+        openMenu(nav);
+      }
+    });
+
+    if (backdrop) {
+      backdrop.addEventListener("click", () => closeMenu(nav));
+    }
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => closeMenu(nav));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu(nav);
+    });
+
+    window.matchMedia("(min-width: 960px)").addEventListener("change", (event) => {
+      if (event.matches) closeMenu(nav);
+    });
   }
 
   function renderNav(container) {
@@ -43,11 +101,25 @@
 
     const nav = document.createElement("nav");
     nav.className = "site-nav";
+    nav.setAttribute("aria-label", "Navegação principal");
     nav.innerHTML = `
       <div class="site-nav__inner">
-        <a class="site-nav__brand" href="${brandPath}">${brandLabel}</a>
-        <ul class="site-nav__links"></ul>
+        <div class="site-nav__bar">
+          <a class="site-nav__brand" href="${brandPath}">
+            <span class="site-nav__brand-mark">SP-111</span>
+            <span class="site-nav__brand-text">${brandLabel}</span>
+          </a>
+          <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Abrir menu de navegação">
+            <span class="site-nav__toggle-bar"></span>
+            <span class="site-nav__toggle-bar"></span>
+            <span class="site-nav__toggle-bar"></span>
+          </button>
+        </div>
+        <div class="site-nav__panel" id="site-nav-menu">
+          <ul class="site-nav__links"></ul>
+        </div>
       </div>
+      <div class="site-nav__backdrop" hidden></div>
     `;
 
     const list = nav.querySelector(".site-nav__links");
@@ -56,11 +128,15 @@
       const a = document.createElement("a");
       a.href = prefix + item.path;
       a.textContent = item.label;
-      if (isActive(item.path)) a.classList.add("active");
+      if (isActive(item.path)) {
+        a.classList.add("active");
+        a.setAttribute("aria-current", "page");
+      }
       li.appendChild(a);
       list.appendChild(li);
     });
 
+    setupMenu(nav);
     container.replaceWith(nav);
   }
 

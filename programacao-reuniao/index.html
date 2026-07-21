@@ -9,41 +9,37 @@
 <body>
   <div id="site-nav" data-brand="Programação da Reunião"></div>
 
-  <header class="page-header">
+  <header class="page-banner" style="background-image: url('../assets/reunioes/banner.jpg');">
     <h1>Reuniões para a Semana da Visita a sua Congregação</h1>
-    <div class="page-header__divider"></div>
   </header>
 
-  <main class="main">
-    <section class="section">
-      <p>Reuniões para a Semana da Visita a sua Congregação.</p>
-      <h2>Semestre</h2>
-      <div class="link-grid link-grid--2">
-        <a class="link-card" href="setembro-fevereiro.html">
-          <span class="link-card__icon">📅</span>
-          Setembro à Fevereiro
-        </a>
-        <a class="link-card" href="marco-agosto.html">
-          <span class="link-card__icon">📅</span>
-          Março à Agosto
-        </a>
-      </div>
-    </section>
+  <div class="section-layout">
+    <div id="section-subnav" data-section="programacao-reuniao"></div>
 
-    <section class="section">
-      <h2>Como as congregações das Testemunhas de Jeová estão organizadas?</h2>
-      <p>Cada congregação é supervisionada por um corpo de anciãos, ou grupo de homens responsáveis. Cerca de 20 congregações formam um circuito. As congregações recebem visitas regulares de anciãos viajantes, conhecidos como superintendentes de circuito.</p>
-      <p>Instruções e orientações bíblicas são fornecidas pelo Corpo Governante, uma comissão composta por Testemunhas de Jeová experientes que servem na sede mundial das Testemunhas de Jeová em Warwick, Nova York, Estados Unidos. —
-        <a href="https://www.jw.org/pt/biblioteca/biblia/biblia-de-estudo/livros/atos/15/#v44015023-v44015029" target="_blank" rel="noopener">Atos 15:23-29</a>;
-        <a href="https://www.jw.org/pt/biblioteca/biblia/biblia-de-estudo/livros/1-Tim%C3%B3teo/3/#v54003001-v54003007" target="_blank" rel="noopener">1 Timóteo 3:1-7</a>.
-      </p>
-    </section>
-  </main>
+    <div class="section-content">
+      <p>Reuniões para a Semana da Visita a sua Congregação.</p>
+      <p><strong>Semestre</strong></p>
+      <div class="semester-links">
+        <a href="setembro-fevereiro.html">Setembro à Fevereiro</a>
+        <a href="marco-agosto.html">Março à Agosto</a>
+      </div>
+
+      <section class="section">
+        <h2>Como as congregações das Testemunhas de Jeová estão organizadas?</h2>
+        <p>Cada congregação é supervisionada por um corpo de anciãos, ou grupo de homens responsáveis. Cerca de 20 congregações formam um circuito. As congregações recebem visitas regulares de anciãos viajantes, conhecidos como superintendentes de circuito.</p>
+        <p>Instruções e orientações bíblicas são fornecidas pelo Corpo Governante, uma comissão composta por Testemunhas de Jeová experientes que servem na sede mundial das Testemunhas de Jeová em Warwick, Nova York, Estados Unidos. —
+          <a href="https://www.jw.org/pt/biblioteca/biblia/biblia-de-estudo/livros/atos/15/#v44015023-v44015029" target="_blank" rel="noopener">Atos 15:23-29</a>;
+          <a href="https://www.jw.org/pt/biblioteca/biblia/biblia-de-estudo/livros/1-Tim%C3%B3teo/3/#v54003001-v54003007" target="_blank" rel="noopener">1 Timóteo 3:1-7</a>.
+        </p>
+      </section>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <p>Circuito SP-111 — Carol e Wagner Monteiro</p>
   </footer>
 
   <script src="../js/nav.js"></script>
+  <script src="../js/subnav.js"></script>
 </body>
 </html>

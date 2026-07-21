@@ -9,17 +9,14 @@
 <body>
   <div id="site-nav" data-brand="Itinerário"></div>
 
-  <header class="page-header">
+  <header class="page-banner" style="background-image: url('../assets/itinerario/banner.jpg');">
     <h1>Itinerário — 1º Semestre (set/fev)</h1>
-    <div class="page-header__divider"></div>
   </header>
 
-  <main class="main main--wide">
-    <div class="semester-tabs">
-      <a class="semester-tab active" href="setembro-fevereiro.html">1º Semestre (set/fev)</a>
-      <a class="semester-tab" href="marco-agosto.html">2º Semestre (mar/ago)</a>
-    </div>
+  <div class="section-layout">
+    <div id="section-subnav" data-section="itinerario"></div>
 
+    <div class="section-content">
     <div class="schedule-month">
       <h3>SETEMBRO DE 2026</h3>
       <table class="schedule-table">
@@ -81,12 +78,14 @@
         <tr><td class="dates">23 à 28</td><td>SEMANA DE PIONEIRO</td></tr>
       </table>
     </div>
-  </main>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <p>Circuito SP-111 — Carol e Wagner Monteiro</p>
   </footer>
 
   <script src="../js/nav.js"></script>
+  <script src="../js/subnav.js"></script>
 </body>
 </html>
