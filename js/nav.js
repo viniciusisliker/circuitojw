@@ -203,7 +203,7 @@
         <span class="circuit-brand circuit-brand--nav">
           <span class="circuit-brand__word">Circuito</span>
           <span class="circuit-brand__sep" aria-hidden="true"></span>
-          <span class="circuit-brand__code">SP-111</span>
+          <span class="circuit-brand__code"><span class="circuit-brand__region">SP</span><span class="circuit-brand__dash">-</span><span class="circuit-brand__num">111</span></span>
         </span>
       </a>`;
     }

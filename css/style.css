@@ -146,32 +146,73 @@ body.nav-open {
 }
 
 .circuit-brand__ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.circuit-brand__ornament::before {
+  content: "";
   display: block;
-  width: 48px;
-  height: 2px;
-  margin-bottom: 18px;
-  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), transparent);
+  width: 52px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
   border-radius: 1px;
+}
+
+.circuit-brand__gem {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px rgba(214, 163, 33, 0.5);
 }
 
 .circuit-brand__word {
   font-family: var(--font-display);
   font-weight: 300;
   font-style: italic;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--text);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
 }
 
 .circuit-brand__code {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
   font-family: var(--font-body);
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  background: linear-gradient(120deg, #f5d978 0%, var(--gold) 42%, var(--gold-dark) 100%);
+  line-height: 1;
+}
+
+.circuit-brand__region,
+.circuit-brand__dash,
+.circuit-brand__num {
+  background: linear-gradient(120deg, #f8e09a 0%, var(--gold) 45%, #a67c14 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 12px rgba(214, 163, 33, 0.28));
+  filter: drop-shadow(0 1px 10px rgba(214, 163, 33, 0.25));
+}
+
+.circuit-brand__region {
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.circuit-brand__dash {
+  font-weight: 500;
+  letter-spacing: 0;
+  opacity: 0.85;
+  margin: 0 1px;
+}
+
+.circuit-brand__num {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
 }
 
 .circuit-brand__sep {
@@ -184,19 +225,18 @@ body.nav-open {
 }
 
 .circuit-brand--hero {
-  margin: 0 0 24px;
+  margin: 0 0 28px;
 }
 
 .circuit-brand--hero .circuit-brand__word {
-  font-size: clamp(2.6rem, 5.8vw, 4rem);
-  line-height: 1.05;
-  margin-bottom: 6px;
+  font-size: clamp(2.75rem, 6vw, 4.25rem);
+  line-height: 1.02;
+  margin-bottom: 10px;
 }
 
 .circuit-brand--hero .circuit-brand__code {
-  font-size: clamp(1rem, 2.2vw, 1.35rem);
-  letter-spacing: 0.38em;
-  padding-left: 0.12em;
+  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+  padding-left: 0.06em;
 }
 
 .circuit-brand--nav {
@@ -209,11 +249,20 @@ body.nav-open {
   font-size: 1.05rem;
   font-weight: 400;
   font-style: italic;
+  text-shadow: none;
 }
 
 .circuit-brand--nav .circuit-brand__code {
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+}
+
+.circuit-brand--nav .circuit-brand__region {
+  letter-spacing: 0.12em;
+}
+
+.circuit-brand--nav .circuit-brand__region,
+.circuit-brand--nav .circuit-brand__dash,
+.circuit-brand--nav .circuit-brand__num {
   filter: none;
 }
 
@@ -520,19 +569,25 @@ body.nav-open {
 }
 
 .hero-content__desc {
-  margin: 0 0 32px;
-  max-width: 34rem;
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--text-muted);
+  margin: 0 0 36px;
+  max-width: 30rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(242, 234, 220, 0.78);
+  font-weight: 400;
 }
 
 .semester-selector {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  gap: 12px;
-  max-width: 32rem;
+  gap: 14px;
+  max-width: 34rem;
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(214, 163, 33, 0.18);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(8px);
 }
 
 .semester-selector__label {
@@ -1051,19 +1106,20 @@ blockquote {
     padding-bottom: 48px;
   }
 
-  .hero-content__title,
   .circuit-brand--hero .circuit-brand__word {
-    font-size: clamp(2.1rem, 7vw, 2.8rem);
+    font-size: clamp(2.2rem, 7vw, 3rem);
   }
 
   .circuit-brand--hero .circuit-brand__code {
-    letter-spacing: 0.28em;
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
-  .circuit-brand__ornament {
+  .circuit-brand__ornament::before {
     width: 36px;
-    margin-bottom: 14px;
+  }
+
+  .semester-selector {
+    padding: 16px 18px;
   }
 
   .hero-visual {

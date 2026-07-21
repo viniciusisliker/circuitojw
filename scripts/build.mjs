@@ -51,17 +51,18 @@ function prefixFor(depth) {
 }
 
 function renderCircuitBrand(variant = "hero") {
+  const code = `<span class="circuit-brand__code"><span class="circuit-brand__region">SP</span><span class="circuit-brand__dash">-</span><span class="circuit-brand__num">111</span></span>`;
   if (variant === "hero") {
     return `<h1 class="circuit-brand circuit-brand--hero">
-      <span class="circuit-brand__ornament" aria-hidden="true"></span>
+      <span class="circuit-brand__ornament" aria-hidden="true"><span class="circuit-brand__gem"></span></span>
       <span class="circuit-brand__word">Circuito</span>
-      <span class="circuit-brand__code">SP-111</span>
+      ${code}
     </h1>`;
   }
   return `<span class="circuit-brand circuit-brand--nav">
     <span class="circuit-brand__word">Circuito</span>
     <span class="circuit-brand__sep" aria-hidden="true"></span>
-    <span class="circuit-brand__code">SP-111</span>
+    ${code}
   </span>`;
 }
 
