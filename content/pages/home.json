@@ -1,30 +1,36 @@
 {
   "pageTitle": "Tela Inicial",
-  "brand": "Tela Inicial",
+  "brand": "Circuito SP-111",
   "hero": {
-    "title": "Informações do Circuito SP-111",
-    "subtitle": "Queira selecionar o semestre que deseja informações.",
+    "eyebrow": "CIRCUITO SP-111",
+    "title": "Informações que fortalecem a fé",
+    "description": "Acesse programação, itinerário e formulários da visita do superintendente de circuito. Selecione o semestre para começar.",
     "bgImage": "assets/hero-bg.jpg",
     "image": "assets/home/hero-illustration.jpg",
-    "imageAlt": "Ilustração de reunião congregacional"
+    "imageAlt": "Ilustração de reunião congregacional",
+    "semesterOptions": [
+      { "label": "1º semestre — Setembro à Fevereiro", "href": "programacao-reuniao/setembro-fevereiro.html" },
+      { "label": "2º semestre — Março à Agosto", "href": "programacao-reuniao/marco-agosto.html" }
+    ],
+    "ctaLabel": "Ver programação"
   },
   "linkGroups": [
     {
-      "label": "Formulários da Visita:",
+      "label": "Formulários da Visita",
       "links": [
-        { "label": "👉 Visita do Viajante", "href": "visita-do-viajante/" },
-        { "label": "👉 Programação da Reunião", "href": "programacao-reuniao/" },
-        { "label": "👉 Itinerário", "href": "itinerario/" },
-        { "label": "👉 Aviso de Visita", "href": "aviso-visita/" }
+        { "label": "Visita do Viajante", "href": "visita-do-viajante/" },
+        { "label": "Programação da Reunião", "href": "programacao-reuniao/" },
+        { "label": "Itinerário", "href": "itinerario/" },
+        { "label": "Aviso de Visita", "href": "aviso-visita/" }
       ]
     },
     {
-      "label": "Outros:",
+      "label": "Outros",
       "links": [
-        { "label": "👉 Assembleias", "href": "assembleias/" },
-        { "label": "👉 Reuniões Anual com os Pioneiros Regulares", "href": "reuniao-pioneiros/" },
-        { "label": "👉 Escola de Pioneiros", "href": "escola-pioneiros/" },
-        { "label": "👉 Desastres Naturais", "href": "desastres-naturais/" }
+        { "label": "Assembleias", "href": "assembleias/" },
+        { "label": "Reunião Anual com Pioneiros", "href": "reuniao-pioneiros/" },
+        { "label": "Escola de Pioneiros", "href": "escola-pioneiros/" },
+        { "label": "Desastres Naturais", "href": "desastres-naturais/" }
       ]
     }
   ],

@@ -94,7 +94,7 @@
     if (backdrop) backdrop.hidden = false;
     document.body.classList.add("nav-open");
 
-    if (window.matchMedia("(max-width: 959px)").matches) {
+    if (window.matchMedia("(max-width: 900px)").matches) {
       nav.querySelectorAll(".site-nav__item--group.has-active").forEach((item) => {
         item.classList.add("is-open");
         const btn = item.querySelector(".site-nav__group-btn");
@@ -125,7 +125,7 @@
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "site-nav__group-btn";
-    btn.textContent = group.label;
+    btn.innerHTML = `<span class="site-nav__group-label">${group.label}</span><svg class="site-nav__chevron" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
     btn.setAttribute("aria-expanded", "false");
     btn.setAttribute("aria-haspopup", "true");
     btn.setAttribute("aria-controls", menuId);
@@ -188,7 +188,7 @@
       }
     });
 
-    window.matchMedia("(min-width: 960px)").addEventListener("change", (event) => {
+    window.matchMedia("(min-width: 901px)").addEventListener("change", (event) => {
       if (event.matches) closeMenu(nav);
     });
   }
@@ -203,17 +203,15 @@
     nav.setAttribute("aria-label", "Navegação principal");
     nav.innerHTML = `
       <div class="site-nav__inner">
-        <div class="site-nav__bar">
-          <a class="site-nav__brand" href="${brandPath}">
-            <span class="site-nav__brand-mark">SP-111</span>
-            <span class="site-nav__brand-text">${brandLabel}</span>
-          </a>
-          <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Abrir menu de navegação">
-            <span class="site-nav__toggle-bar"></span>
-            <span class="site-nav__toggle-bar"></span>
-            <span class="site-nav__toggle-bar"></span>
-          </button>
-        </div>
+        <a class="site-nav__brand" href="${brandPath}">
+          <span class="site-nav__brand-mark">SP-111</span>
+          <span class="site-nav__brand-text">${brandLabel}</span>
+        </a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Abrir menu de navegação">
+          <span class="site-nav__toggle-bar"></span>
+          <span class="site-nav__toggle-bar"></span>
+          <span class="site-nav__toggle-bar"></span>
+        </button>
         <div class="site-nav__panel" id="site-nav-menu">
           <ul class="site-nav__links"></ul>
         </div>

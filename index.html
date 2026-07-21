@@ -7,34 +7,55 @@
   <meta name="description" content="Informações do Circuito SP-111 — visitas, programação, itinerário, assembleias e pioneiros. Superintendente de Circuito Carol e Wagner Monteiro.">
   <title>Tela Inicial — Circuito SP-111</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="site-nav" data-brand="Tela Inicial"></div>
+  <div id="site-nav" data-brand="Circuito SP-111"></div>
 
-  <header class="hero" style="background-image: url('assets/hero-bg.jpg');">
-    <h1 class="hero__title">Informações do Circuito SP-111</h1>
-    <div class="hero__divider"></div>
-    <img class="hero__image" src="assets/home/hero-illustration.jpg" alt="Ilustração de reunião congregacional">
-    <p class="hero__subtitle">Queira selecionar o semestre que deseja informações.</p>
-  </header>
-
-  <main class="main">
-    <div class="simple-links">
-      <div class="simple-links__group">
-        <p class="simple-links__label">Formulários da Visita:</p>
-        <p><a href="visita-do-viajante/">👉 Visita do Viajante</a></p>
-        <p><a href="programacao-reuniao/">👉 Programação da Reunião</a></p>
-        <p><a href="itinerario/">👉 Itinerário</a></p>
-        <p><a href="aviso-visita/">👉 Aviso de Visita</a></p>
+  <section class="home-hero" style="--hero-bg: url('assets/hero-bg.jpg')">
+    <div class="home-hero__bg" aria-hidden="true"></div>
+    <div class="home-hero__decor" aria-hidden="true"></div>
+    <div class="home-hero__inner">
+      <div class="hero-content">
+        <p class="hero-content__eyebrow">CIRCUITO SP-111</p>
+        <h1 class="hero-content__title">Informações que fortalecem a fé</h1>
+        <p class="hero-content__desc">Acesse programação, itinerário e formulários da visita do superintendente de circuito. Selecione o semestre para começar.</p>
+        <form class="semester-selector" id="semester-form" action="#">
+          <label class="semester-selector__label" for="semester-select">Semestre</label>
+          <select id="semester-select" class="semester-selector__select" required>
+            <option value="" disabled selected>Selecione o semestre</option>
+            <option value="programacao-reuniao/setembro-fevereiro.html">1º semestre — Setembro à Fevereiro</option>
+            <option value="programacao-reuniao/marco-agosto.html">2º semestre — Março à Agosto</option>
+          </select>
+          <button type="submit" class="btn-primary">Ver programação</button>
+        </form>
       </div>
+      <div class="hero-visual">
+        <div class="layered-image-card">
+          <span class="layered-image-card__frame layered-image-card__frame--back"></span>
+          <span class="layered-image-card__frame layered-image-card__frame--mid"></span>
+          <img class="layered-image-card__image" src="assets/home/hero-illustration.jpg" alt="Ilustração de reunião congregacional">
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="simple-links__group">
-        <p class="simple-links__label">Outros:</p>
-        <p><a href="assembleias/">👉 Assembleias</a></p>
-        <p><a href="reuniao-pioneiros/">👉 Reuniões Anual com os Pioneiros Regulares</a></p>
-        <p><a href="escola-pioneiros/">👉 Escola de Pioneiros</a></p>
-        <p><a href="desastres-naturais/">👉 Desastres Naturais</a></p>
+  <main class="main main--wide">
+    <div class="quick-links">
+      <div class="link-grid link-grid--2">
+        <a class="link-card" href="visita-do-viajante/"><span class="link-card__icon">→</span>Visita do Viajante</a>
+        <a class="link-card" href="programacao-reuniao/"><span class="link-card__icon">→</span>Programação da Reunião</a>
+        <a class="link-card" href="itinerario/"><span class="link-card__icon">→</span>Itinerário</a>
+        <a class="link-card" href="aviso-visita/"><span class="link-card__icon">→</span>Aviso de Visita</a>
+      </div>
+      <div class="link-grid link-grid--2">
+        <a class="link-card" href="assembleias/"><span class="link-card__icon">→</span>Assembleias</a>
+        <a class="link-card" href="reuniao-pioneiros/"><span class="link-card__icon">→</span>Reunião Anual com Pioneiros</a>
+        <a class="link-card" href="escola-pioneiros/"><span class="link-card__icon">→</span>Escola de Pioneiros</a>
+        <a class="link-card" href="desastres-naturais/"><span class="link-card__icon">→</span>Desastres Naturais</a>
       </div>
     </div>
 
@@ -73,5 +94,6 @@
     <p>Circuito SP-111 — Carol e Wagner Monteiro</p>
   </footer>
   <script src="js/nav.js"></script>
+  <script src="js/home-hero.js"></script>
 </body>
 </html>

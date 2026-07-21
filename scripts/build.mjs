@@ -57,6 +57,9 @@ function pageShell({ depth, title, brand, body, scripts = ["nav.js"], descriptio
   const safeTitle = escapeHtml(title);
   const safeBrand = escapeHtml(brand);
   const metaDescription = escapeHtml(description || site.metaDescription || site.titleSuffix);
+  const fontsLink = `  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">`;
   return `<!DOCTYPE html>
 <!-- Gerado automaticamente por npm run build — edite content/ ou use /admin/ -->
 <html lang="pt-BR">
@@ -66,6 +69,7 @@ function pageShell({ depth, title, brand, body, scripts = ["nav.js"], descriptio
   <meta name="description" content="${metaDescription}">
   <title>${safeTitle} — ${escapeHtml(site.titleSuffix)}</title>
   <link rel="icon" href="${p}assets/favicon.svg" type="image/svg+xml">
+${fontsLink}
   <link rel="stylesheet" href="${p}css/style.css">
 </head>
 <body>
@@ -169,31 +173,61 @@ ${month.rows.map((row) => `        <tr><td class="dates">${row.dates}</td><td>${
 
 function buildHome() {
   const page = readJson("pages/home.json");
-  const links = page.linkGroups
+  const h = page.hero;
+  const semesterOptions = (h.semesterOptions || [])
+    .map((o) => `            <option value="${escapeHtml(o.href)}">${escapeHtml(o.label)}</option>`)
+    .join("\n");
+
+  const linkCards = page.linkGroups
     .map(
-      (group) => `      <div class="simple-links__group">
-        <p class="simple-links__label">${group.label}</p>
-${group.links.map((l) => `        <p><a href="${l.href}">${l.label}</a></p>`).join("\n")}
+      (group) => `      <div class="link-grid link-grid--2">
+${group.links.map((l) => `        <a class="link-card" href="${l.href}"><span class="link-card__icon">→</span>${escapeHtml(l.label.replace(/^👉\s*/, ""))}</a>`).join("\n")}
       </div>`
     )
-    .join("\n\n");
+    .join("\n");
 
   const body = `
-  <header class="hero" style="background-image: url('${page.hero.bgImage}');">
-    <h1 class="hero__title">${page.hero.title}</h1>
-    <div class="hero__divider"></div>
-    <img class="hero__image" src="${page.hero.image}" alt="${page.hero.imageAlt}">
-    <p class="hero__subtitle">${page.hero.subtitle}</p>
-  </header>
+  <section class="home-hero" style="--hero-bg: url('${h.bgImage}')">
+    <div class="home-hero__bg" aria-hidden="true"></div>
+    <div class="home-hero__decor" aria-hidden="true"></div>
+    <div class="home-hero__inner">
+      <div class="hero-content">
+        <p class="hero-content__eyebrow">${escapeHtml(h.eyebrow || "CIRCUITO SP-111")}</p>
+        <h1 class="hero-content__title">${escapeHtml(h.title)}</h1>
+        <p class="hero-content__desc">${escapeHtml(h.description || h.subtitle || "")}</p>
+        <form class="semester-selector" id="semester-form" action="#">
+          <label class="semester-selector__label" for="semester-select">Semestre</label>
+          <select id="semester-select" class="semester-selector__select" required>
+            <option value="" disabled selected>Selecione o semestre</option>
+${semesterOptions}
+          </select>
+          <button type="submit" class="btn-primary">${escapeHtml(h.ctaLabel || "Continuar")}</button>
+        </form>
+      </div>
+      <div class="hero-visual">
+        <div class="layered-image-card">
+          <span class="layered-image-card__frame layered-image-card__frame--back"></span>
+          <span class="layered-image-card__frame layered-image-card__frame--mid"></span>
+          <img class="layered-image-card__image" src="${h.image}" alt="${escapeHtml(h.imageAlt)}">
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <main class="main">
-    <div class="simple-links">
-${links}
+  <main class="main main--wide">
+    <div class="quick-links">
+${linkCards}
     </div>
 ${page.showInformacoesImportantes ? "\n" + renderInformacoesImportantes() : ""}
   </main>`;
 
-  writeHtml("index.html", pageShell({ depth: 0, title: page.pageTitle, brand: page.brand, body }));
+  writeHtml("index.html", pageShell({
+    depth: 0,
+    title: page.pageTitle,
+    brand: page.brand,
+    body,
+    scripts: ["nav.js", "home-hero.js"],
+  }));
 }
 
 function buildVisita() {
