@@ -2,8 +2,7 @@
   "pageTitle": "Tela Inicial",
   "brand": "Circuito SP-111",
   "hero": {
-    "eyebrow": "CIRCUITO SP-111",
-    "title": "Informações que fortalecem a fé",
+    "title": "Circuito SP-111",
     "description": "Acesse programação, itinerário e formulários da visita do superintendente de circuito. Selecione o semestre para começar.",
     "bgImage": "assets/hero-bg.jpg",
     "image": "assets/home/hero-illustration.jpg",
