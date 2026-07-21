@@ -193,6 +193,26 @@
     });
   }
 
+  function isCircuitBrand(label) {
+    return /circuito\s*sp[-\s]?111/i.test(label);
+  }
+
+  function renderBrandHtml(brandPath, brandLabel) {
+    if (isCircuitBrand(brandLabel)) {
+      return `<a class="site-nav__brand" href="${brandPath}">
+        <span class="circuit-brand circuit-brand--nav">
+          <span class="circuit-brand__word">Circuito</span>
+          <span class="circuit-brand__sep" aria-hidden="true"></span>
+          <span class="circuit-brand__code">SP-111</span>
+        </span>
+      </a>`;
+    }
+    return `<a class="site-nav__brand" href="${brandPath}">
+      <span class="site-nav__brand-mark">SP-111</span>
+      <span class="site-nav__brand-text">${brandLabel}</span>
+    </a>`;
+  }
+
   function renderNav(container) {
     const prefix = getRootPrefix();
     const brandPath = prefix + "index.html";
@@ -203,10 +223,7 @@
     nav.setAttribute("aria-label", "Navegação principal");
     nav.innerHTML = `
       <div class="site-nav__inner">
-        <a class="site-nav__brand" href="${brandPath}">
-          <span class="site-nav__brand-mark">SP-111</span>
-          <span class="site-nav__brand-text">${brandLabel}</span>
-        </a>
+        ${renderBrandHtml(brandPath, brandLabel)}
         <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Abrir menu de navegação">
           <span class="site-nav__toggle-bar"></span>
           <span class="site-nav__toggle-bar"></span>

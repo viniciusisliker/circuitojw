@@ -50,6 +50,21 @@ function prefixFor(depth) {
   return depth === 0 ? "" : "../".repeat(depth);
 }
 
+function renderCircuitBrand(variant = "hero") {
+  if (variant === "hero") {
+    return `<h1 class="circuit-brand circuit-brand--hero">
+      <span class="circuit-brand__ornament" aria-hidden="true"></span>
+      <span class="circuit-brand__word">Circuito</span>
+      <span class="circuit-brand__code">SP-111</span>
+    </h1>`;
+  }
+  return `<span class="circuit-brand circuit-brand--nav">
+    <span class="circuit-brand__word">Circuito</span>
+    <span class="circuit-brand__sep" aria-hidden="true"></span>
+    <span class="circuit-brand__code">SP-111</span>
+  </span>`;
+}
+
 function pageShell({ depth, title, brand, body, scripts = ["nav.js"], description = "" }) {
   const site = readJson("site.json");
   const p = prefixFor(depth);
@@ -59,7 +74,7 @@ function pageShell({ depth, title, brand, body, scripts = ["nav.js"], descriptio
   const metaDescription = escapeHtml(description || site.metaDescription || site.titleSuffix);
   const fontsLink = `  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">`;
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">`;
   return `<!DOCTYPE html>
 <!-- Gerado automaticamente por npm run build — edite content/ ou use /admin/ -->
 <html lang="pt-BR">
@@ -193,7 +208,7 @@ ${group.links.map((l) => `        <a class="link-card" href="${l.href}"><span cl
     <div class="home-hero__inner">
       <div class="hero-content">
         ${h.eyebrow ? `<p class="hero-content__eyebrow">${escapeHtml(h.eyebrow)}</p>` : ""}
-        <h1 class="hero-content__title">${escapeHtml(h.title || "Circuito SP-111")}</h1>
+        ${renderCircuitBrand("hero")}
         <p class="hero-content__desc">${escapeHtml(h.description || h.subtitle || "")}</p>
         <form class="semester-selector" id="semester-form" action="#">
           <label class="semester-selector__label" for="semester-select">Semestre</label>
