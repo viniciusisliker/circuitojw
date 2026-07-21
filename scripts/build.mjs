@@ -192,8 +192,8 @@ ${group.links.map((l) => `        <a class="link-card" href="${l.href}"><span cl
     <div class="home-hero__decor" aria-hidden="true"></div>
     <div class="home-hero__inner">
       <div class="hero-content">
-        <p class="hero-content__eyebrow">${escapeHtml(h.eyebrow || "CIRCUITO SP-111")}</p>
-        <h1 class="hero-content__title">${escapeHtml(h.title)}</h1>
+        ${h.eyebrow ? `<p class="hero-content__eyebrow">${escapeHtml(h.eyebrow)}</p>` : ""}
+        <h1 class="hero-content__title">${escapeHtml(h.title || "Circuito SP-111")}</h1>
         <p class="hero-content__desc">${escapeHtml(h.description || h.subtitle || "")}</p>
         <form class="semester-selector" id="semester-form" action="#">
           <label class="semester-selector__label" for="semester-select">Semestre</label>
