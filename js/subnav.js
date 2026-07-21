@@ -39,22 +39,26 @@
     const prefix = getPrefix();
     const active = currentFile();
 
-    const aside = document.createElement("aside");
-    aside.className = "section-sidebar";
-    aside.innerHTML = `<nav class="section-sidebar__nav"><ul></ul></nav>`;
+    const nav = document.createElement("nav");
+    nav.className = "section-subnav";
+    nav.setAttribute("aria-label", "Navegação da seção");
+    nav.innerHTML = `<div class="section-subnav__inner"><ul></ul></div>`;
 
-    const list = aside.querySelector("ul");
+    const list = nav.querySelector("ul");
     config.items.forEach((item) => {
       const li = document.createElement("li");
       const a = document.createElement("a");
       a.href = prefix + item.path;
       a.textContent = item.label;
-      if (item.path.toLowerCase() === active) a.classList.add("active");
+      if (item.path.toLowerCase() === active) {
+        a.classList.add("active");
+        a.setAttribute("aria-current", "page");
+      }
       li.appendChild(a);
       list.appendChild(li);
     });
 
-    container.replaceWith(aside);
+    container.replaceWith(nav);
   }
 
   function init() {

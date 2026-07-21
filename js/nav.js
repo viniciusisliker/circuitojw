@@ -1,19 +1,37 @@
 (function () {
-  const NAV_ITEMS = [
-    { label: "Tela Inicial", path: "index.html" },
-    { label: "Visita do Viajante", path: "visita-do-viajante/index.html" },
-    { label: "Programação da Reunião", path: "programacao-reuniao/index.html" },
-    { label: "Itinerário", path: "itinerario/index.html" },
-    { label: "Aviso de Visita", path: "aviso-visita/index.html" },
-    { label: "Assembleias", path: "assembleias/index.html" },
-    { label: "Reunião Pioneiros", path: "reuniao-pioneiros/index.html" },
-    { label: "Escola de Pioneiros", path: "escola-pioneiros/index.html" },
-    { label: "Desastres Naturais", path: "desastres-naturais/index.html" },
+  const NAV_STRUCTURE = [
+    { type: "link", label: "Início", path: "index.html" },
+    {
+      type: "group",
+      label: "Visita",
+      children: [
+        { label: "Visita do Viajante", path: "visita-do-viajante/index.html" },
+        { label: "Programação da Reunião", path: "programacao-reuniao/index.html" },
+        { label: "Itinerário", path: "itinerario/index.html" },
+        { label: "Aviso de Visita", path: "aviso-visita/index.html" },
+      ],
+    },
+    { type: "link", label: "Assembleias", path: "assembleias/index.html" },
+    {
+      type: "group",
+      label: "Pioneiros",
+      children: [
+        { label: "Reunião Anual", path: "reuniao-pioneiros/index.html" },
+        { label: "Escola de Pioneiros", path: "escola-pioneiros/index.html" },
+      ],
+    },
+    { type: "link", label: "Desastres", path: "desastres-naturais/index.html" },
   ];
 
-  const SECTIONS = NAV_ITEMS.filter((item) => item.path !== "index.html").map((item) =>
-    item.path.replace("/index.html", "").toLowerCase()
-  );
+  const SECTIONS = NAV_STRUCTURE.flatMap((item) => {
+    if (item.type === "link" && item.path !== "index.html") {
+      return [item.path.replace("/index.html", "").toLowerCase()];
+    }
+    if (item.type === "group") {
+      return item.children.map((child) => child.path.replace("/index.html", "").toLowerCase());
+    }
+    return [];
+  });
 
   function getRootPrefix() {
     const script = document.querySelector('script[src*="nav.js"]');
@@ -38,6 +56,20 @@
     return path.includes("/" + section + "/") || path.endsWith("/" + section);
   }
 
+  function isGroupActive(children) {
+    return children.some((child) => isActive(child.path));
+  }
+
+  function closeAllDropdowns(nav, except) {
+    nav.querySelectorAll(".site-nav__item--group.is-open").forEach((item) => {
+      if (item !== except) {
+        item.classList.remove("is-open");
+        const btn = item.querySelector(".site-nav__group-btn");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   function closeMenu(nav) {
     nav.classList.remove("site-nav--open");
     const toggle = nav.querySelector(".site-nav__toggle");
@@ -48,6 +80,7 @@
     }
     if (backdrop) backdrop.hidden = true;
     document.body.classList.remove("nav-open");
+    closeAllDropdowns(nav);
   }
 
   function openMenu(nav) {
@@ -62,31 +95,89 @@
     document.body.classList.add("nav-open");
   }
 
+  function createLink(prefix, item) {
+    const a = document.createElement("a");
+    a.href = prefix + item.path;
+    a.textContent = item.label;
+    a.className = "site-nav__link";
+    if (isActive(item.path)) {
+      a.classList.add("active");
+      a.setAttribute("aria-current", "page");
+    }
+    return a;
+  }
+
+  function createGroup(prefix, group, index) {
+    const li = document.createElement("li");
+    li.className = "site-nav__item site-nav__item--group";
+    if (isGroupActive(group.children)) li.classList.add("has-active");
+
+    const menuId = "site-nav-menu-" + index;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "site-nav__group-btn";
+    btn.textContent = group.label;
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-haspopup", "true");
+    btn.setAttribute("aria-controls", menuId);
+
+    const dropdown = document.createElement("ul");
+    dropdown.className = "site-nav__dropdown";
+    dropdown.id = menuId;
+
+    group.children.forEach((child) => {
+      const subLi = document.createElement("li");
+      const a = createLink(prefix, child);
+      a.classList.add("site-nav__sublink");
+      subLi.appendChild(a);
+      dropdown.appendChild(subLi);
+    });
+
+    btn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = li.classList.contains("is-open");
+      closeAllDropdowns(li.closest(".site-nav"), isOpen ? null : li);
+      li.classList.toggle("is-open", !isOpen);
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    });
+
+    li.appendChild(btn);
+    li.appendChild(dropdown);
+    return li;
+  }
+
   function setupMenu(nav) {
     const toggle = nav.querySelector(".site-nav__toggle");
     const backdrop = nav.querySelector(".site-nav__backdrop");
-    const links = nav.querySelectorAll(".site-nav__links a");
 
-    if (!toggle) return;
-
-    toggle.addEventListener("click", () => {
-      if (nav.classList.contains("site-nav--open")) {
-        closeMenu(nav);
-      } else {
-        openMenu(nav);
-      }
-    });
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        if (nav.classList.contains("site-nav--open")) {
+          closeMenu(nav);
+        } else {
+          openMenu(nav);
+        }
+      });
+    }
 
     if (backdrop) {
       backdrop.addEventListener("click", () => closeMenu(nav));
     }
 
-    links.forEach((link) => {
+    nav.querySelectorAll(".site-nav__link, .site-nav__sublink").forEach((link) => {
       link.addEventListener("click", () => closeMenu(nav));
     });
 
+    document.addEventListener("click", (event) => {
+      if (!nav.contains(event.target)) closeAllDropdowns(nav);
+    });
+
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeMenu(nav);
+      if (event.key === "Escape") {
+        closeAllDropdowns(nav);
+        closeMenu(nav);
+      }
     });
 
     window.matchMedia("(min-width: 960px)").addEventListener("change", (event) => {
@@ -123,16 +214,18 @@
     `;
 
     const list = nav.querySelector(".site-nav__links");
-    NAV_ITEMS.forEach((item) => {
+
+    NAV_STRUCTURE.forEach((item, index) => {
       const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = prefix + item.path;
-      a.textContent = item.label;
-      if (isActive(item.path)) {
-        a.classList.add("active");
-        a.setAttribute("aria-current", "page");
+      li.className = "site-nav__item";
+
+      if (item.type === "link") {
+        li.appendChild(createLink(prefix, item));
+      } else {
+        list.appendChild(createGroup(prefix, item, index));
+        return;
       }
-      li.appendChild(a);
+
       list.appendChild(li);
     });
 
