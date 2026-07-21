@@ -266,6 +266,22 @@ img {
   flex-shrink: 0;
 }
 
+.inline-link {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--link);
+  margin: 4px 0;
+}
+
+a.inline-link:hover {
+  text-decoration: underline;
+}
+
+p.inline-link {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
 /* Semester tabs */
 .semester-tabs {
   display: flex;
