@@ -16,13 +16,9 @@
     },
   };
 
-  function getPrefix() {
-    const script = document.querySelector('script[src*="subnav.js"]');
-    if (!script) return "./";
-
-    const src = script.getAttribute("src") || "js/subnav.js";
-    const prefix = src.replace(/js\/subnav\.js(\?.*)?$/, "");
-    return prefix || "./";
+  function getSectionPrefix() {
+    // Links are sibling pages in the same section folder (e.g. programacao-reuniao/).
+    return "./";
   }
 
   function currentFile() {
@@ -36,7 +32,7 @@
     const config = SECTIONS[section];
     if (!config) return;
 
-    const prefix = getPrefix();
+    const prefix = getSectionPrefix();
     const active = currentFile();
 
     const nav = document.createElement("nav");

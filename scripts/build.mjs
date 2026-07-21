@@ -196,9 +196,14 @@ function buildHome() {
 
   const linkCards = page.linkGroups
     .map(
-      (group) => `      <div class="link-grid link-grid--2">
-${group.links.map((l) => `        <a class="link-card" href="${l.href}"><span class="link-card__icon">→</span>${escapeHtml(l.label.replace(/^👉\s*/, ""))}</a>`).join("\n")}
-      </div>`
+      (group, index) => `      <details class="link-accordion"${index === 0 ? " open" : ""}>
+        <summary class="link-accordion__trigger">${escapeHtml(group.label)}</summary>
+        <div class="link-accordion__panel">
+          <div class="link-grid">
+${group.links.map((l) => `            <a class="link-card" href="${l.href}"><span class="link-card__icon">→</span>${escapeHtml(l.label.replace(/^👉\s*/, ""))}</a>`).join("\n")}
+          </div>
+        </div>
+      </details>`
     )
     .join("\n");
 

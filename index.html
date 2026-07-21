@@ -49,18 +49,28 @@
 
   <main class="main main--wide">
     <div class="quick-links">
-      <div class="link-grid link-grid--2">
-        <a class="link-card" href="visita-do-viajante/"><span class="link-card__icon">→</span>Visita do Viajante</a>
-        <a class="link-card" href="programacao-reuniao/"><span class="link-card__icon">→</span>Programação da Reunião</a>
-        <a class="link-card" href="itinerario/"><span class="link-card__icon">→</span>Itinerário</a>
-        <a class="link-card" href="aviso-visita/"><span class="link-card__icon">→</span>Aviso de Visita</a>
-      </div>
-      <div class="link-grid link-grid--2">
-        <a class="link-card" href="assembleias/"><span class="link-card__icon">→</span>Assembleias</a>
-        <a class="link-card" href="reuniao-pioneiros/"><span class="link-card__icon">→</span>Reunião Anual com Pioneiros</a>
-        <a class="link-card" href="escola-pioneiros/"><span class="link-card__icon">→</span>Escola de Pioneiros</a>
-        <a class="link-card" href="desastres-naturais/"><span class="link-card__icon">→</span>Desastres Naturais</a>
-      </div>
+      <details class="link-accordion" open>
+        <summary class="link-accordion__trigger">Formulários da Visita</summary>
+        <div class="link-accordion__panel">
+          <div class="link-grid">
+            <a class="link-card" href="visita-do-viajante/"><span class="link-card__icon">→</span>Visita do Viajante</a>
+            <a class="link-card" href="programacao-reuniao/"><span class="link-card__icon">→</span>Programação da Reunião</a>
+            <a class="link-card" href="itinerario/"><span class="link-card__icon">→</span>Itinerário</a>
+            <a class="link-card" href="aviso-visita/"><span class="link-card__icon">→</span>Aviso de Visita</a>
+          </div>
+        </div>
+      </details>
+      <details class="link-accordion">
+        <summary class="link-accordion__trigger">Outros</summary>
+        <div class="link-accordion__panel">
+          <div class="link-grid">
+            <a class="link-card" href="assembleias/"><span class="link-card__icon">→</span>Assembleia</a>
+            <a class="link-card" href="reuniao-pioneiros/"><span class="link-card__icon">→</span>Reunião Anual com Pioneiros</a>
+            <a class="link-card" href="escola-pioneiros/"><span class="link-card__icon">→</span>Escola de Pioneiros</a>
+            <a class="link-card" href="desastres-naturais/"><span class="link-card__icon">→</span>Desastres Naturais</a>
+          </div>
+        </div>
+      </details>
     </div>
 
     <section class="section" id="informacoes-importantes">

@@ -26,7 +26,7 @@
     {
       "label": "Outros",
       "links": [
-        { "label": "Assembleias", "href": "assembleias/" },
+        { "label": "Assembleia", "href": "assembleias/" },
         { "label": "Reunião Anual com Pioneiros", "href": "reuniao-pioneiros/" },
         { "label": "Escola de Pioneiros", "href": "escola-pioneiros/" },
         { "label": "Desastres Naturais", "href": "desastres-naturais/" }
