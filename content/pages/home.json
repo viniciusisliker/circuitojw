@@ -1,0 +1,32 @@
+{
+  "pageTitle": "Tela Inicial",
+  "brand": "Tela Inicial",
+  "hero": {
+    "title": "Informações do Circuito SP-111",
+    "subtitle": "Queira selecionar o semestre que deseja informações.",
+    "bgImage": "assets/hero-bg.jpg",
+    "image": "assets/home/hero-illustration.jpg",
+    "imageAlt": "Ilustração de reunião congregacional"
+  },
+  "linkGroups": [
+    {
+      "label": "Formulários da Visita:",
+      "links": [
+        { "label": "👉 Visita do Viajante", "href": "visita-do-viajante/" },
+        { "label": "👉 Programação da Reunião", "href": "programacao-reuniao/" },
+        { "label": "👉 Itinerário", "href": "itinerario/" },
+        { "label": "👉 Aviso de Visita", "href": "aviso-visita/" }
+      ]
+    },
+    {
+      "label": "Outros:",
+      "links": [
+        { "label": "👉 Assembleias", "href": "assembleias/" },
+        { "label": "👉 Reuniões Anual com os Pioneiros Regulares", "href": "reuniao-pioneiros/" },
+        { "label": "👉 Escola de Pioneiros", "href": "escola-pioneiros/" },
+        { "label": "👉 Desastres Naturais", "href": "desastres-naturais/" }
+      ]
+    }
+  ],
+  "showInformacoesImportantes": true
+}

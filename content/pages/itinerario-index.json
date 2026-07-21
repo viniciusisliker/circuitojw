@@ -1,0 +1,11 @@
+{
+  "pageTitle": "Itinerário",
+  "brand": "Itinerário",
+  "banner": { "title": "Itinerário", "image": "assets/itinerario/banner.jpg" },
+  "subnav": "itinerario",
+  "semesterLinks": [
+    { "label": "👉🏻 Itinerário de Setembro à Fevereiro", "href": "setembro-fevereiro.html" },
+    { "label": "👉🏻 Itinerário de Março à Agosto", "href": "marco-agosto.html" }
+  ],
+  "showInformacoesImportantes": true
+}

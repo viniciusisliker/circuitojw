@@ -1,0 +1,36 @@
+{
+  "pageTitle": "Reuniões — Setembro à Fevereiro",
+  "brand": "Programação da Reunião",
+  "banner": { "title": "Setembro à Fevereiro", "image": "assets/reunioes/semestre-banner.jpg" },
+  "subnav": "programacao-reuniao",
+  "blocks": [
+    {
+      "title": "Terça-feira",
+      "lines": [
+        "Tema do Discurso do Viajante",
+        { "type": "theme", "text": "'Tenha a mais alta consideração por eles em amor'" },
+        "Cântico final: 103 | Os anciãos são um presente de Jeová",
+        "Oração final: Wagner A. Monteiro"
+      ]
+    },
+    {
+      "title": "Sexta-feira às 19:00",
+      "list": ["Pioneiros Regulares e Auxiliares", "Reunião com Anciãos e Servos Ministeriais"]
+    },
+    {
+      "title": "Reunião do final de Semana",
+      "lines": [
+        "Tema do Discurso do Viajante",
+        { "type": "theme", "text": "O episódio 2 da série A História e o Ministério de Jesus (Parte 1) será exibido no lugar do discurso público." },
+        "Cântico inicial: 74 | A Canção do Reino",
+        "Orador: Wagner Monteiro",
+        "Cântico da Revista",
+        "ESTUDO DA REVISTA A SENTINELA",
+        "Tema do Discurso de Serviço do Viajante",
+        { "type": "theme", "text": "\"Quem Realmente Governa o Mundo?\"" },
+        "Cântico final: 77 | Luz num Mundo Sombrio",
+        "Oração final: Wagner Monteiro"
+      ]
+    }
+  ]
+}

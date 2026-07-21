@@ -1,0 +1,26 @@
+{
+  "pageTitle": "Aviso de Visita (S-302)",
+  "brand": "Aviso de Visita",
+  "header": { "title": "O formulário de confirmação de visita (S-302)" },
+  "intro": "Selecione a congregação para visualizar o formulário S-302:",
+  "congregations": [
+    { "name": "Jacarandá - Taboão da Serra", "code": "82.909", "url": "https://drive.google.com/file/d/1Uqs_itJ5fITC0mREUxV2IBJSdX7z-XQj/view?usp=sharing" },
+    { "name": "Jardim Elizabeth - São Paulo", "code": "49.577", "url": "https://drive.google.com/file/d/1h0N4HSdx4xz5-62Fc3WDDKPDVPLIOR65/view?usp=sharing" },
+    { "name": "Jardim Magdalena - São Paulo", "code": "85.993", "url": "https://drive.google.com/file/d/1mDOMk8yohpMpBUfcowhVkb7lS0Z4jPAJ/view?usp=share_link" },
+    { "name": "Jardim Marcelo - São Paulo", "code": "127.340", "url": "https://drive.google.com/file/d/1U1OGo2en1dfxO6uI0wiJO2G7uR4sj3Js/view?usp=share_link" },
+    { "name": "Jardim Margarida - Taboão da Serra", "code": "56.143", "url": "https://drive.google.com/file/d/1zQ4XFMlHqW0WlQEk75S396C0aA4KV1W6/view?usp=share_link" },
+    { "name": "Jardim Maria Helena - Taboão da Serra", "code": "139.675", "url": "https://drive.google.com/file/d/1n_W8Lr_Zhb8q3CNRM2lNS1G833TrbRny/view?usp=share_link" },
+    { "name": "Jardim Maria Sampaio - São Paulo", "code": "132.225", "url": "https://drive.google.com/open?id=1FPH3NUaGt2zljSWuSut26-c-21ga2EtW&usp=drive_fs" },
+    { "name": "Jardim Mitsutani - São Paulo", "code": "83.311", "url": "https://drive.google.com/file/d/15tr76Vx6TS0tIlXHSY1Gs9Y-YJ7YwNPd/view?usp=share_link" },
+    { "name": "Jardim Rosana - São Paulo", "code": "24.745", "url": "https://drive.google.com/file/d/12mgR4fqnbLbYMy_KJxn1f7o1_hD4QnKX/view?usp=share_link" },
+    { "name": "Jardim Scândia - Taboão da Serra", "code": "107.854", "url": "https://drive.google.com/file/d/1m14NNkHOY20UfPIYPu-85_4EkV0FcAFa/view?usp=share_link" },
+    { "name": "Jardim Soraia - São Paulo", "code": "106.088", "url": "https://drive.google.com/file/d/110qJm0wovsoNZsHwvq6sTMf5OMHFys1C/view?usp=share_link" },
+    { "name": "Jardim Valquíria - São Paulo", "code": "115.261", "url": "https://drive.google.com/file/d/15aO-tBocI3PAoa0Z4f-BYNa65-6hIEBG/view?usp=share_link" },
+    { "name": "Parque Aliança - São Paulo", "code": "72.249", "url": "https://drive.google.com/file/d/1asVkjWAblMt5Kpin-kDeRa6hdIE4-SYw/view?usp=share_link" },
+    { "name": "Parque Sônia - São Paulo", "code": "62.919", "url": "https://drive.google.com/file/d/1WWjuDHGRQh1ImIk4gr6QP6xvEOHTSAna/view?usp=share_link" },
+    { "name": "Pirajussara - Taboão da Serra", "code": "1.180", "url": "https://drive.google.com/file/d/1KTZgBJtn17wKU8wy2TM8Q0_71_B1SIPO/view?usp=share_link" },
+    { "name": "Saint Morritz - Taboão da Serra", "code": "94.490", "url": "https://drive.google.com/file/d/11b29QIJ7V1fWqSWAhkIwu5HmJWD0PM6K/view?usp=share_link" },
+    { "name": "Salvador Correia - São Paulo", "code": "28.548", "url": "https://drive.google.com/file/d/1jNQHP4c98U9qViKQe_KuSwYpqcKrESNy/view?usp=share_link" },
+    { "name": "Vila Olinda - Embu das Artes", "code": "73.072", "url": "https://drive.google.com/file/d/1JkUqhUylpfWBVyMDgHU8eI3Me4HMcGd1/view?usp=share_link" }
+  ]
+}

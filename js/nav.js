@@ -93,6 +93,14 @@
     }
     if (backdrop) backdrop.hidden = false;
     document.body.classList.add("nav-open");
+
+    if (window.matchMedia("(max-width: 959px)").matches) {
+      nav.querySelectorAll(".site-nav__item--group.has-active").forEach((item) => {
+        item.classList.add("is-open");
+        const btn = item.querySelector(".site-nav__group-btn");
+        if (btn) btn.setAttribute("aria-expanded", "true");
+      });
+    }
   }
 
   function createLink(prefix, item) {

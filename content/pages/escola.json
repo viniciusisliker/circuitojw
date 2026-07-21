@@ -1,0 +1,13 @@
+{
+  "pageTitle": "Escola de Pioneiros",
+  "brand": "Escola de Pioneiros",
+  "header": { "title": "Escola de Pioneiros" },
+  "avisoHtml": "<p>As informações sobre a Escola de Pioneiros do circuito SP-111 estão disponíveis apenas para usuários autorizados no site original.</p><p>Entre em contato com o superintendente de circuito ou com o corpo de anciãos da sua congregação para obter acesso às informações e materiais relacionados à Escola de Pioneiros.</p>",
+  "referenciaTitulo": "Referência no Itinerário",
+  "referenciaIntro": "Conforme o itinerário do 2º semestre (mar/ago), as semanas de Escola de Pioneiro estão previstas para:",
+  "referenciaItens": [
+    "Julho 2026: 27 à 01 — Escola de Pioneiro",
+    "Agosto 2026: 03 à 08 — Escola de Pioneiro"
+  ],
+  "linkItinerario": "../itinerario/marco-agosto.html"
+}

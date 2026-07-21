@@ -1,0 +1,14 @@
+{
+  "name": "circuitojw",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "npx serve .",
+    "dev": "npm run build && npx serve .",
+    "cms": "npx decap-server"
+  },
+  "devDependencies": {
+    "decap-server": "^3.2.0"
+  }
+}

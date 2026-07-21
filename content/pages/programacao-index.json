@@ -1,0 +1,18 @@
+{
+  "pageTitle": "Programação da Reunião",
+  "brand": "Programação da Reunião",
+  "banner": {
+    "title": "Reuniões para a Semana da Visita a sua Congregação",
+    "image": "assets/reunioes/banner.jpg"
+  },
+  "subnav": "programacao-reuniao",
+  "introHtml": "<p>Reuniões para a Semana da Visita a sua Congregação.</p><p><strong>Semestre</strong></p>",
+  "semesterLinks": [
+    { "label": "Setembro à Fevereiro", "href": "setembro-fevereiro.html" },
+    { "label": "Março à Agosto", "href": "marco-agosto.html" }
+  ],
+  "section": {
+    "title": "Como as congregações das Testemunhas de Jeová estão organizadas?",
+    "html": "<p>Cada congregação é supervisionada por um corpo de anciãos, ou grupo de homens responsáveis. Cerca de 20 congregações formam um circuito. As congregações recebem visitas regulares de anciãos viajantes, conhecidos como superintendentes de circuito.</p><p>Instruções e orientações bíblicas são fornecidas pelo Corpo Governante, uma comissão composta por Testemunhas de Jeová experientes que servem na sede mundial das Testemunhas de Jeová em Warwick, Nova York, Estados Unidos. — <a href=\"https://www.jw.org/pt/biblioteca/biblia/biblia-de-estudo/livros/atos/15/#v44015023-v44015029\" target=\"_blank\" rel=\"noopener\">Atos 15:23-29</a>; <a href=\"https://www.jw.org/pt/biblioteca/biblia/biblia-de-estudo/livros/1-Tim%C3%B3teo/3/#v54003001-v54003007\" target=\"_blank\" rel=\"noopener\">1 Timóteo 3:1-7</a>.</p>"
+  }
+}

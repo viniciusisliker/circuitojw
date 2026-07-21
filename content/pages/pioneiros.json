@@ -1,0 +1,24 @@
+{
+  "pageTitle": "Reunião Anual com Pioneiros",
+  "brand": "Reunião Pioneiros",
+  "banner": { "title": "Reunião Anual com os Pioneiros Regulares e Especiais", "image": "assets/pioneiros/banner.jpg" },
+  "introHtml": "<p>Amado(a) Pioneiro(a);</p><p>É com alegria que informamos os pioneiros regulares do circuito SP-111 que arranjos estão sendo feitos para nossa <strong>REUNIÃO ESPECIAL ANUAL</strong> com todos vocês. No dia <strong>16/11/2025 às 08:30 horas</strong> iniciaremos esta importante reunião tão aguardada por nós pioneiros.</p><p>O Salão de Assembleia será aberto às <strong>08:00</strong>.</p>",
+  "local": {
+    "title": "Local",
+    "endereco": "R. José Manoel de Almeida, 1020, Das Lages\nVargem Grande Paulista, SP — 06730-000"
+  },
+  "tema": "\"Eu os reanimarei\" — Mateus 11:28.",
+  "orientacoes": [
+    "Ressaltamos que ninguém estará autorizado a gravar esta reunião.",
+    "Você poderá usar dispositivos eletrônicos para acompanhar, anotar e acessar o site jw.org. Configure seu dispositivo para ficar no silencioso durante a reunião e, caso precise atender ligações, faça-o no lado externo do Salão.",
+    "Pioneiros que não estão designados no circuito SP-111 não devem ser convidados sem autorização prévia do viajante.",
+    "Esta provisão é somente para pioneiros regulares e especiais de nosso circuito — essa reunião é um presente de Jeová para você pioneiro.",
+    "O inteiro programa com cântico, oração e intervalo terá a duração de 3 horas. Toda programação será presencial, não haverá a provisão do Zoom.",
+    "Caso deseje, poderá trazer um leve lanche para consumir no intervalo ou no final da reunião."
+  ],
+  "encerramento": "Estamos orando para que Jeová abençoe este programa espiritual que nos dará grande refrigério espiritual e, por sua vez, alegrará o coração de Jeová.",
+  "observacoes": [
+    "OBS: O arranjo do Supte Serviço assistir a esta reunião foi descontinuado.",
+    "Nenhuma criança, publicador, servo ministerial ou ancião estão autorizados a assistir a esta reunião, a menos que ele seja pioneiro regular deste TO ou tenha autorização do viajante."
+  ]
+}

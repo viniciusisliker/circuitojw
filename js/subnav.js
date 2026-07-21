@@ -59,6 +59,17 @@
     });
 
     container.replaceWith(nav);
+
+    const activeLink = nav.querySelector("a.active");
+    const inner = nav.querySelector(".section-subnav__inner");
+    if (activeLink && inner) {
+      requestAnimationFrame(() => {
+        const linkLeft = activeLink.offsetLeft;
+        const linkWidth = activeLink.offsetWidth;
+        const innerWidth = inner.clientWidth;
+        inner.scrollLeft = linkLeft - innerWidth / 2 + linkWidth / 2;
+      });
+    }
   }
 
   function init() {

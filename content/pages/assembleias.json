@@ -1,0 +1,25 @@
+{
+  "pageTitle": "Assembleias",
+  "brand": "Assembleias",
+  "banner": { "title": "Assembleias", "image": "assets/assembleias/banner.jpg" },
+  "events": [
+    {
+      "date": "Sábado, 14 de novembro de 2026",
+      "subtitle": "COM O SUPERINTENDENTE DE CIRCUITO",
+      "carta": "🌐 Carta para o primeiro Evento do Ano"
+    },
+    {
+      "date": "Domingo, 28 de março de 2027",
+      "subtitle": "COM O REPRESENTANTE DE BETEL",
+      "carta": "🌐 Carta para o segundo Evento do Ano"
+    }
+  ],
+  "preparacao": {
+    "title": "Preparação",
+    "intro": "Para criar expectativa pelas assembleias e congressos, deve-se fazer o seguinte:",
+    "items": [
+      "O coordenador do corpo de anciãos deve providenciar que, dois a três meses antes de cada assembleia ou congresso, comecem a ser feitos anúncios na reunião do meio de semana para lembrar a congregação sobre o evento.",
+      "O superintendente da Reunião Vida e Ministério deve providenciar que, na semana que antecede a assembleia, o presidente da Reunião Vida e Ministério destaque brevemente o tema e os discursos principais da assembleia, enquanto o programa da assembleia é mostrado nas telas do Salão do Reino."
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "pageTitle": "Desastres Naturais",
+  "brand": "Desastres Naturais",
+  "banner": { "title": "Desastres Naturais em Nossa Localidade", "image": "assets/desastres/banner.jpg" },
+  "formulario": {
+    "label": "🌐 Formulário para quando houver um desastre",
+    "url": "https://forms.office.com/r/Ch7G8MddA0"
+  },
+  "preparacao": {
+    "title": "Preparação",
+    "intro": "Para criar expectativa pelas assembleias e congressos, deve-se fazer o seguinte:",
+    "items": [
+      "O coordenador do corpo de anciãos deve providenciar que, dois a três meses antes de cada assembleia ou congresso, comecem a ser feitos anúncios na reunião do meio de semana para lembrar a congregação sobre o evento.",
+      "O superintendente da Reunião Vida e Ministério deve providenciar que, na semana que antecede a assembleia, o presidente da Reunião Vida e Ministério destaque brevemente o tema e os discursos principais da assembleia, enquanto o programa da assembleia é mostrado nas telas do Salão do Reino."
+    ]
+  }
+}

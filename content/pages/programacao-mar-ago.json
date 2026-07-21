@@ -1,0 +1,36 @@
+{
+  "pageTitle": "Reuniões — Março à Agosto",
+  "brand": "Programação da Reunião",
+  "banner": { "title": "Março à Agosto", "image": "assets/reunioes/semestre-banner.jpg" },
+  "subnav": "programacao-reuniao",
+  "blocks": [
+    {
+      "title": "Terça-feira",
+      "lines": [
+        "Tema do Discurso do Viajante",
+        { "type": "theme", "text": "O que você vai fazer \"pela causa das boas novas\"?" },
+        "Cântico final: 69 | Continue Pregando!",
+        "Oração final: Wagner A. Monteiro"
+      ]
+    },
+    {
+      "title": "Sexta-feira às 19:00",
+      "list": ["Pioneiros Regulares e Auxiliares", "Reunião com Anciãos e Servos Ministeriais"]
+    },
+    {
+      "title": "Reunião do final de Semana",
+      "lines": [
+        "Tema do Discurso do Viajante",
+        { "type": "theme", "text": "\"Você Colherá Vida Eterna?\"" },
+        "Cântico inicial: 140 | A Canção do Reino",
+        "Orador: Wagner Monteiro",
+        "Cântico da Revista",
+        "ESTUDO DA REVISTA A SENTINELA",
+        "Tema do Discurso de Serviço do Viajante",
+        { "type": "theme", "text": "\"Mantenha sua Esperança Forte\"" },
+        "Cântico final: 110 | Alegria que vem de Jeová",
+        "Oração final: Wagner Monteiro"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,361 @@
+local_backend: true
+
+backend:
+  name: github
+  repo: viniciusisliker/circuitojw
+  branch: main
+
+site_url: https://viniciusisliker.github.io/circuitojw
+display_url: https://viniciusisliker.github.io/circuitojw
+logo_url: https://viniciusisliker.github.io/circuitojw/assets/home/hero-illustration.jpg
+
+media_folder: assets/uploads
+public_folder: /circuitojw/assets/uploads
+
+locale: pt
+
+collections:
+  - name: config
+    label: Configurações
+    files:
+      - name: site
+        label: Site geral
+        file: content/site.json
+        fields:
+          - { label: Nome do circuito, name: circuitName, widget: string }
+          - { label: Texto do rodapé, name: footerText, widget: string }
+          - { label: Sufixo do título, name: titleSuffix, widget: string }
+          - { label: Descrição (SEO), name: metaDescription, widget: text }
+
+      - name: informacoes
+        label: Informações importantes (compartilhado)
+        file: content/shared/informacoes-importantes.json
+        fields:
+          - { label: Título da seção, name: title, widget: string }
+          - label: Discurso Especial
+            name: discursoEspecial
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Rótulo do tema, name: temaLabel, widget: string }
+              - { label: Parágrafo 1, name: paragrafo1, widget: text }
+              - { label: Parágrafo 2, name: paragrafo2, widget: text }
+              - { label: Parágrafo 3, name: paragrafo3, widget: text }
+              - { label: Referência, name: referencia, widget: string }
+          - label: Celebração
+            name: celebracao
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Data, name: data, widget: string }
+              - { label: Parágrafos, name: paragrafos, widget: list, field: { label: Parágrafo, name: paragrafo, widget: text } }
+              - { label: Prazos, name: prazos, widget: list, field: { label: Prazo, name: prazo, widget: string } }
+              - { label: Parágrafo final, name: paragrafoFinal, widget: text }
+              - { label: Título próximas datas, name: proximasDatasTitulo, widget: string }
+              - { label: Próximas datas, name: proximasDatas, widget: list, field: { label: Data, name: data, widget: string } }
+              - { label: Referência, name: referencia, widget: string }
+
+  - name: pages
+    label: Páginas
+    files:
+      - name: home
+        label: Tela Inicial
+        file: content/pages/home.json
+        fields:
+          - { label: Título da página, name: pageTitle, widget: string }
+          - { label: Marca na navbar, name: brand, widget: string }
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Subtítulo, name: subtitle, widget: string }
+              - { label: Imagem de fundo, name: bgImage, widget: string }
+              - { label: Ilustração, name: image, widget: string }
+              - { label: Alt da ilustração, name: imageAlt, widget: string }
+          - label: Grupos de links
+            name: linkGroups
+            widget: list
+            fields:
+              - { label: Rótulo, name: label, widget: string }
+              - label: Links
+                name: links
+                widget: list
+                fields:
+                  - { label: Texto, name: label, widget: string }
+                  - { label: URL, name: href, widget: string }
+          - { label: Mostrar informações importantes, name: showInformacoesImportantes, widget: boolean, default: true }
+
+      - name: visita
+        label: Visita do Viajante
+        file: content/pages/visita.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Introdução
+            name: intro
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Subtítulo, name: subtitle, widget: string }
+          - label: Seções
+            name: sections
+            widget: list
+            fields:
+              - { label: Imagem, name: image, widget: string }
+              - { label: Alt, name: imageAlt, widget: string }
+              - { label: Inverter colunas, name: reverse, widget: boolean, default: false }
+              - { label: Conteúdo HTML, name: html, widget: text }
+
+      - name: programacao-index
+        label: Programação — Início
+        file: content/pages/programacao-index.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Banner
+            name: banner
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Imagem, name: image, widget: string }
+          - { label: Intro HTML, name: introHtml, widget: text }
+          - label: Links semestre
+            name: semesterLinks
+            widget: list
+            fields:
+              - { label: Texto, name: label, widget: string }
+              - { label: URL, name: href, widget: string }
+          - label: Seção
+            name: section
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Conteúdo HTML, name: html, widget: text }
+
+      - name: programacao-set-fev
+        label: Programação — Set/Fev
+        file: content/pages/programacao-set-fev.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Banner
+            name: banner
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Imagem, name: image, widget: string }
+          - label: Blocos do programa
+            name: blocks
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: "Linhas (prefixe tema com theme:)", name: lines, widget: list, required: false, field: { label: Linha, name: line, widget: string } }
+              - { label: Lista, name: list, widget: list, required: false, field: { label: Item, name: item, widget: string } }
+
+      - name: programacao-mar-ago
+        label: Programação — Mar/Ago
+        file: content/pages/programacao-mar-ago.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Banner
+            name: banner
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Imagem, name: image, widget: string }
+          - label: Blocos
+            name: blocks
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Linhas, name: lines, widget: list, required: false, field: { label: Linha, name: line, widget: string } }
+              - { label: Lista, name: list, widget: list, required: false, field: { label: Item, name: item, widget: string } }
+
+      - name: itinerario-index
+        label: Itinerário — Início
+        file: content/pages/itinerario-index.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Banner
+            name: banner
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Imagem, name: image, widget: string }
+          - label: Links semestre
+            name: semesterLinks
+            widget: list
+            fields:
+              - { label: Texto, name: label, widget: string }
+              - { label: URL, name: href, widget: string }
+          - { label: Mostrar informações importantes, name: showInformacoesImportantes, widget: boolean }
+
+      - name: itinerario-set-fev
+        label: Itinerário — Set/Fev
+        file: content/pages/itinerario-set-fev.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Banner
+            name: banner
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Imagem, name: image, widget: string }
+          - label: Meses
+            name: months
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Mês, name: title, widget: string }
+              - label: Linhas
+                name: rows
+                widget: list
+                fields:
+                  - { label: Datas, name: dates, widget: string }
+                  - { label: Congregação / evento, name: label, widget: string }
+
+      - name: itinerario-mar-ago
+        label: Itinerário — Mar/Ago
+        file: content/pages/itinerario-mar-ago.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Banner
+            name: banner
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Imagem, name: image, widget: string }
+          - label: Meses
+            name: months
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Mês, name: title, widget: string }
+              - label: Linhas
+                name: rows
+                widget: list
+                fields:
+                  - { label: Datas, name: dates, widget: string }
+                  - { label: Congregação / evento, name: label, widget: string }
+
+      - name: aviso-visita
+        label: Aviso de Visita (S-302)
+        file: content/pages/aviso-visita.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Cabeçalho
+            name: header
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+          - { label: Intro, name: intro, widget: string }
+          - label: Congregações
+            name: congregations
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Nome, name: name, widget: string }
+              - { label: Código, name: code, widget: string }
+              - { label: URL Drive, name: url, widget: string }
+
+      - name: assembleias
+        label: Assembleias
+        file: content/pages/assembleias.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Banner
+            name: banner
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Imagem, name: image, widget: string }
+          - label: Eventos
+            name: events
+            widget: list
+            fields:
+              - { label: Data, name: date, widget: string }
+              - { label: Subtítulo, name: subtitle, widget: string }
+              - { label: Carta, name: carta, widget: string }
+          - label: Preparação
+            name: preparacao
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Intro, name: intro, widget: text }
+              - { label: Itens, name: items, widget: list, field: { label: Item, name: item, widget: text } }
+
+      - name: pioneiros
+        label: Reunião Pioneiros
+        file: content/pages/pioneiros.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Banner
+            name: banner
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Imagem, name: image, widget: string }
+          - { label: Intro HTML, name: introHtml, widget: text }
+          - label: Local
+            name: local
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Endereço, name: endereco, widget: text }
+          - { label: Tema, name: tema, widget: string }
+          - { label: Orientações, name: orientacoes, widget: list, field: { label: Item, name: item, widget: text } }
+          - { label: Encerramento, name: encerramento, widget: text }
+          - { label: Observações, name: observacoes, widget: list, field: { label: Obs, name: obs, widget: text } }
+
+      - name: escola
+        label: Escola de Pioneiros
+        file: content/pages/escola.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Cabeçalho
+            name: header
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+          - { label: Aviso HTML, name: avisoHtml, widget: text }
+          - { label: Título referência, name: referenciaTitulo, widget: string }
+          - { label: Intro referência, name: referenciaIntro, widget: text }
+          - { label: Itens referência, name: referenciaItens, widget: list, field: { label: Item, name: item, widget: string } }
+          - { label: Link itinerário, name: linkItinerario, widget: string }
+
+      - name: desastres
+        label: Desastres Naturais
+        file: content/pages/desastres.json
+        fields:
+          - { label: Título, name: pageTitle, widget: string }
+          - { label: Marca, name: brand, widget: string }
+          - label: Banner
+            name: banner
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Imagem, name: image, widget: string }
+          - label: Formulário
+            name: formulario
+            widget: object
+            fields:
+              - { label: Texto, name: label, widget: string }
+              - { label: URL, name: url, widget: string }
+          - label: Preparação
+            name: preparacao
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Intro, name: intro, widget: text }
+              - { label: Itens, name: items, widget: list, field: { label: Item, name: item, widget: text } }
