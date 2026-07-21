@@ -11,30 +11,29 @@
     { label: "Desastres Naturais", path: "desastres-naturais/index.html" },
   ];
 
-  function getRootPrefix() {
-    const path = window.location.pathname.replace(/\\/g, "/");
-    const parts = path.split("/").filter(Boolean);
-    const file = parts[parts.length - 1] || "";
-    const isFile = file.includes(".");
-    const depth = isFile ? parts.length - 1 : parts.length;
-    return depth > 0 ? "../".repeat(depth) : "./";
-  }
+  const SECTIONS = NAV_ITEMS.filter((item) => item.path !== "index.html").map((item) =>
+    item.path.replace("/index.html", "").toLowerCase()
+  );
 
-  function resolve(path, prefix) {
-    const anchor = document.createElement("a");
-    anchor.href = prefix + path;
-    return anchor.pathname.split("/").pop() === path.split("/").pop()
-      ? anchor.href
-      : prefix + path;
+  /** Usa o caminho do próprio script (ex: ../js/nav.js → ../) como base confiável. */
+  function getRootPrefix() {
+    const script = document.querySelector('script[src*="nav.js"]');
+    if (!script) return "./";
+
+    const src = script.getAttribute("src") || "js/nav.js";
+    const prefix = src.replace(/js\/nav\.js(\?.*)?$/, "");
+    return prefix || "./";
   }
 
   function isActive(itemPath) {
-    const current = window.location.pathname.replace(/\\/g, "/").toLowerCase();
-    const section = itemPath.replace("/index.html", "").replace("index.html", "").toLowerCase();
-    if (section === "" || section === ".") {
-      return current.endsWith("/") || /\/index\.html$/i.test(current) && !current.includes("/", current.lastIndexOf("/") - 1);
+    const path = window.location.pathname.replace(/\\/g, "/").toLowerCase();
+
+    if (itemPath === "index.html") {
+      return !SECTIONS.some((section) => path.includes("/" + section + "/"));
     }
-    return current.includes("/" + section + "/") || current.includes("/" + section + ".");
+
+    const section = itemPath.replace("/index.html", "").toLowerCase();
+    return path.includes("/" + section + "/");
   }
 
   function renderNav(container) {
@@ -65,8 +64,14 @@
     container.replaceWith(nav);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  function init() {
     const placeholder = document.getElementById("site-nav");
     if (placeholder) renderNav(placeholder);
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
