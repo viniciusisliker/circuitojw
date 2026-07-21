@@ -1123,7 +1123,16 @@ blockquote {
   }
 
   .hero-visual {
-    order: 2;
+    order: -1;
+  }
+
+  .hero-content {
+    order: 1;
+  }
+
+  .layered-image-card {
+    max-width: min(100%, 320px);
+    margin: 0 auto;
   }
 
   .site-nav__toggle {
