@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: circuitojw-oauth
+    runtime: node
+    rootDir: oauth
+    buildCommand: echo "no build"
+    startCommand: node server.mjs
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ORIGINS
+        value: https://viniciusisliker.github.io
+      - key: OAUTH_CLIENT_ID
+        sync: false
+      - key: OAUTH_CLIENT_SECRET
+        sync: false
+      - key: REDIRECT_URL
+        sync: false

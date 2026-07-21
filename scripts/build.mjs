@@ -430,31 +430,35 @@ ${page.observacoes.map((o) => `        <p>${o.replace(/^OBS:/, "<strong>OBS:</st
 
 function buildEscola() {
   const page = readJson("pages/escola.json");
+  const p = prefixFor(1);
+  const links = (page.links || [])
+    .map((l) => `        <a class="semester-tab" href="${l.href}">${l.label}</a>`)
+    .join("\n");
   const body = `
-  <header class="page-header">
-    <h1>${page.header.title}</h1>
-    <div class="page-header__divider"></div>
+  <header class="page-banner" style="background-image: url('${p}${page.banner.image}');">
+    <h1>${page.banner.title}</h1>
   </header>
 
   <main class="main">
     <section class="section">
-      <div class="info-box">
-        ${page.avisoHtml}
+      ${page.introHtml}
+    </section>
+    <section class="section">
+      <h2>${page.linksTitulo || "Links úteis"}</h2>
+      <div class="semester-tabs">
+${links}
       </div>
     </section>
     <section class="section">
       <h2>${page.referenciaTitulo}</h2>
       <p>${page.referenciaIntro}</p>
       <ul>
-${normalizeList(page.referenciaItens).map((i) => {
-  const text = String(i);
-  const idx = text.indexOf(":");
-  if (idx === -1) return `        <li>${text}</li>`;
-  return `        <li><strong>${text.slice(0, idx)}:</strong>${text.slice(idx)}</li>`;
-}).join("\n")}
+${normalizeList(page.referenciaItens).map((i) => `        <li>${String(i)}</li>`).join("\n")}
       </ul>
-      <div class="semester-tabs">
-        <a class="semester-tab" href="${page.linkItinerario}">Ver Itinerário Mar/Ago</a>
+    </section>
+    <section class="section">
+      <div class="info-box">
+        ${page.contatoHtml}
       </div>
     </section>
   </main>`;

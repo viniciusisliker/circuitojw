@@ -4,6 +4,9 @@ backend:
   name: github
   repo: viniciusisliker/circuitojw
   branch: main
+  # Descomente após deploy do OAuth (docs/ADMIN-OAUTH.md):
+  # base_url: https://circuitojw-oauth.onrender.com
+  # auth_endpoint: auth
 
 site_url: https://viniciusisliker.github.io/circuitojw
 display_url: https://viniciusisliker.github.io/circuitojw
@@ -323,16 +326,24 @@ collections:
         fields:
           - { label: Título, name: pageTitle, widget: string }
           - { label: Marca, name: brand, widget: string }
-          - label: Cabeçalho
-            name: header
+          - label: Banner
+            name: banner
             widget: object
             fields:
               - { label: Título, name: title, widget: string }
-          - { label: Aviso HTML, name: avisoHtml, widget: text }
+              - { label: Imagem, name: image, widget: string }
+          - { label: Intro HTML, name: introHtml, widget: text }
+          - { label: Título links, name: linksTitulo, widget: string }
+          - label: Links úteis
+            name: links
+            widget: list
+            fields:
+              - { label: Texto, name: label, widget: string }
+              - { label: URL, name: href, widget: string }
           - { label: Título referência, name: referenciaTitulo, widget: string }
           - { label: Intro referência, name: referenciaIntro, widget: text }
           - { label: Itens referência, name: referenciaItens, widget: list, field: { label: Item, name: item, widget: string } }
-          - { label: Link itinerário, name: linkItinerario, widget: string }
+          - { label: Contato HTML, name: contatoHtml, widget: text }
 
       - name: desastres
         label: Desastres Naturais
