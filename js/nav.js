@@ -224,6 +224,15 @@
     nav.innerHTML = `
       <div class="site-nav__inner">
         ${renderBrandHtml(brandPath, brandLabel)}
+        <button class="site-nav__theme" type="button" data-theme-toggle aria-label="Ativar modo claro" title="Ativar modo claro">
+          <svg class="site-nav__theme-icon site-nav__theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.75"/>
+            <path d="M12 2.5v2.2M12 19.3v2.2M4.5 12H2.3M21.7 12h-2.2M5.8 5.8 4.2 4.2M19.8 19.8l-1.6-1.6M18.2 5.8l1.6-1.6M4.2 19.8l1.6-1.6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+          </svg>
+          <svg class="site-nav__theme-icon site-nav__theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.5 14.2a8.2 8.2 0 0 1-10.7-10.7 8.5 8.5 0 1 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+          </svg>
+        </button>
         <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Abrir menu de navegação">
           <span class="site-nav__toggle-bar"></span>
           <span class="site-nav__toggle-bar"></span>

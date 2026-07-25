@@ -66,7 +66,7 @@ function renderCircuitBrand(variant = "hero") {
   </span>`;
 }
 
-function pageShell({ depth, title, brand, body, scripts = ["nav.js"], description = "" }) {
+function pageShell({ depth, title, brand, body, scripts = ["theme.js", "nav.js"], description = "" }) {
   const site = readJson("site.json");
   const p = prefixFor(depth);
   const scriptTags = scripts.map((s) => `  <script src="${p}js/${s}"></script>`).join("\n");
@@ -76,6 +76,7 @@ function pageShell({ depth, title, brand, body, scripts = ["nav.js"], descriptio
   const fontsLink = `  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">`;
+  const themeInit = `  <script>(function(){try{var t=localStorage.getItem("circuitojw-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>`;
   return `<!DOCTYPE html>
 <!-- Gerado automaticamente por npm run build — edite content/ ou use /admin/ -->
 <html lang="pt-BR">
@@ -85,6 +86,7 @@ function pageShell({ depth, title, brand, body, scripts = ["nav.js"], descriptio
   <meta name="description" content="${metaDescription}">
   <title>${safeTitle} — ${escapeHtml(site.titleSuffix)}</title>
   <link rel="icon" href="${p}assets/favicon.svg" type="image/svg+xml">
+${themeInit}
 ${fontsLink}
   <link rel="stylesheet" href="${p}css/style.css">
 </head>
@@ -247,7 +249,7 @@ ${page.showInformacoesImportantes ? "\n" + renderInformacoesImportantes() : ""}
     title: page.pageTitle,
     brand: page.brand,
     body,
-    scripts: ["nav.js", "home-hero.js"],
+    scripts: ["theme.js", "nav.js", "home-hero.js"],
   }));
 }
 
@@ -305,7 +307,7 @@ ${page.semesterLinks.map((l) => `        <a href="${l.href}">${l.label}</a>`).jo
 
   writeHtml(
     "programacao-reuniao/index.html",
-    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["nav.js", "subnav.js"] })
+    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "nav.js", "subnav.js"] })
   );
 }
 
@@ -330,7 +332,7 @@ ${blocks}
 
   writeHtml(
     `programacao-reuniao/${out}`,
-    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["nav.js", "subnav.js"] })
+    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "nav.js", "subnav.js"] })
   );
 }
 
@@ -355,7 +357,7 @@ ${page.showInformacoesImportantes ? "\n" + renderInformacoesImportantes() : ""}
 
   writeHtml(
     "itinerario/index.html",
-    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["nav.js", "subnav.js"] })
+    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "nav.js", "subnav.js"] })
   );
 }
 
@@ -377,7 +379,7 @@ ${renderSchedule(page.months)}
 
   writeHtml(
     `itinerario/${out}`,
-    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["nav.js", "subnav.js"] })
+    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "nav.js", "subnav.js"] })
   );
 }
 
