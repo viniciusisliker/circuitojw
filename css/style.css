@@ -668,6 +668,10 @@ body.nav-open {
     justify-content: center;
   }
 
+  .site-nav__brand:has(.circuit-brand--nav) {
+    display: none;
+  }
+
   .site-nav__panel {
     width: 100%;
     justify-content: center;
