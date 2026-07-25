@@ -101,7 +101,6 @@ ${fontsLink}
 </head>
 <body>
   <div id="site-nav" data-brand="${safeBrand}"></div>
-  <div id="site-update-slot" class="site-update-slot" hidden></div>
 ${body}
   <footer class="site-footer">
     <p>${site.footerText}</p>
