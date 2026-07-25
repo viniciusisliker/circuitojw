@@ -1,4 +1,4 @@
-:root,
+html:not([data-theme="light"]),
 [data-theme="dark"] {
   color-scheme: dark;
 
@@ -394,6 +394,8 @@ body.nav-open {
   color: var(--gold);
   cursor: pointer;
   flex-shrink: 0;
+  position: relative;
+  z-index: 180;
   -webkit-tap-highlight-color: transparent;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
@@ -412,6 +414,8 @@ body.nav-open {
   color: var(--gold);
   cursor: pointer;
   flex-shrink: 0;
+  position: relative;
+  z-index: 180;
   -webkit-tap-highlight-color: transparent;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
@@ -649,6 +653,7 @@ body.nav-open {
     top: 10px;
     right: max(20px, var(--safe-right));
     margin-left: 0;
+    z-index: 180;
   }
 
   .site-nav__refresh {
@@ -656,6 +661,7 @@ body.nav-open {
     top: 10px;
     right: calc(max(20px, var(--safe-right)) + var(--touch-min) + 8px);
     margin-left: 0;
+    z-index: 180;
   }
 
   .site-nav__brand {

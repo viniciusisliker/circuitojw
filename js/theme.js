@@ -35,16 +35,26 @@
     updateToggles();
   }
 
+  function bindToggle(button) {
+    if (!button || button.dataset.themeBound === "true") return;
+    button.dataset.themeBound = "true";
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      toggleTheme();
+    });
+  }
+
   function init() {
     document.addEventListener("click", (event) => {
-      if (event.target.closest("[data-theme-toggle]")) {
-        toggleTheme();
-      }
+      const btn = event.target.closest("[data-theme-toggle]");
+      if (!btn) return;
+      event.preventDefault();
+      toggleTheme();
     });
     refresh();
   }
 
-  window.CircuitTheme = { getTheme, setTheme, toggleTheme, refresh };
+  window.CircuitTheme = { getTheme, setTheme, toggleTheme, refresh, bindToggle };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

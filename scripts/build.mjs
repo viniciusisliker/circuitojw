@@ -76,7 +76,8 @@ function writeVersionFile() {
 function pageShell({ depth, title, brand, body, scripts = ["theme.js", "update.js", "nav.js"], description = "" }) {
   const site = readJson("site.json");
   const p = prefixFor(depth);
-  const scriptTags = scripts.map((s) => `  <script src="${p}js/${s}"></script>`).join("\n");
+  const assetQuery = `?v=${encodeURIComponent(BUILD_VERSION)}`;
+  const scriptTags = scripts.map((s) => `  <script src="${p}js/${s}${assetQuery}"></script>`).join("\n");
   const safeTitle = escapeHtml(title);
   const safeBrand = escapeHtml(brand);
   const metaDescription = escapeHtml(description || site.metaDescription || site.titleSuffix);
@@ -96,7 +97,7 @@ function pageShell({ depth, title, brand, body, scripts = ["theme.js", "update.j
   <link rel="icon" href="${p}assets/favicon.svg" type="image/svg+xml">
 ${themeInit}
 ${fontsLink}
-  <link rel="stylesheet" href="${p}css/style.css">
+  <link rel="stylesheet" href="${p}css/style.css${assetQuery}">
 </head>
 <body>
   <div id="site-nav" data-brand="${safeBrand}"></div>

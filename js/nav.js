@@ -269,6 +269,7 @@
 
     setupMenu(nav);
     container.replaceWith(nav);
+    window.CircuitTheme?.bindToggle?.(nav.querySelector("[data-theme-toggle]"));
     if (window.CircuitTheme?.refresh) window.CircuitTheme.refresh();
   }
 
