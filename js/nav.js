@@ -263,6 +263,7 @@
 
     setupMenu(nav);
     container.replaceWith(nav);
+    if (window.CircuitTheme?.refresh) window.CircuitTheme.refresh();
   }
 
   function init() {

@@ -31,14 +31,20 @@
     });
   }
 
-  function init() {
-    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
-      btn.addEventListener("click", toggleTheme);
-    });
+  function refresh() {
     updateToggles();
   }
 
-  window.CircuitTheme = { getTheme, setTheme, toggleTheme };
+  function init() {
+    document.addEventListener("click", (event) => {
+      if (event.target.closest("[data-theme-toggle]")) {
+        toggleTheme();
+      }
+    });
+    refresh();
+  }
+
+  window.CircuitTheme = { getTheme, setTheme, toggleTheme, refresh };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
