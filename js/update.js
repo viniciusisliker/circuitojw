@@ -1,5 +1,7 @@
 (function () {
   const STORAGE_KEY = "circuitojw-version";
+  const DISMISS_KEY = "circuitojw-update-dismissed";
+  const RELOAD_ALL_KEY = "circuitojw-reload-all";
   let pendingVersion = null;
   let bannerVisible = false;
 
@@ -27,6 +29,27 @@
     } catch (_) {
       /* ignore */
     }
+  }
+
+  function getDismissedVersion() {
+    try {
+      return localStorage.getItem(DISMISS_KEY);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function dismissForVersion(version) {
+    if (!version) {
+      dismissBanner();
+      return;
+    }
+    try {
+      localStorage.setItem(DISMISS_KEY, version);
+    } catch (_) {
+      /* ignore */
+    }
+    dismissBanner();
   }
 
   function getPageVersion() {
@@ -94,11 +117,15 @@
   }
 
   async function hardRefresh() {
-    try {
-      const latest = pendingVersion || (await fetchLatestVersion()) || getPageVersion();
+    const latest = pendingVersion || (await fetchLatestVersion()) || getPageVersion();
+    if (latest) {
       storeVersion(latest);
-    } catch (_) {
-      storeVersion(getPageVersion());
+      try {
+        localStorage.removeItem(DISMISS_KEY);
+        localStorage.setItem(RELOAD_ALL_KEY, String(Date.now()));
+      } catch (_) {
+        /* ignore */
+      }
     }
 
     if ("caches" in window) {
@@ -128,12 +155,23 @@
       return false;
     }
 
-    if (latest !== stored || (pageVersion && pageVersion !== stored)) {
+    if (pageVersion === latest) {
+      storeVersion(latest);
+      dismissBanner();
+      return false;
+    }
+
+    if (latest === stored && pageVersion && pageVersion !== latest) {
+      window.location.reload();
+      return false;
+    }
+
+    if (latest !== stored) {
+      if (getDismissedVersion() === latest) return false;
       showBanner(latest);
       return true;
     }
 
-    storeVersion(latest);
     return false;
   }
 
@@ -142,6 +180,28 @@
     if (!url.searchParams.has("_refresh")) return;
     url.searchParams.delete("_refresh");
     window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+  }
+
+  function watchOtherTabs() {
+    window.addEventListener("storage", (event) => {
+      if (event.key === RELOAD_ALL_KEY && event.newValue) {
+        window.location.reload();
+        return;
+      }
+
+      if (event.key === STORAGE_KEY && event.newValue) {
+        const pageVersion = getPageVersion();
+        if (pageVersion && pageVersion !== event.newValue) {
+          window.location.reload();
+          return;
+        }
+        dismissBanner();
+      }
+
+      if (event.key === DISMISS_KEY) {
+        dismissBanner();
+      }
+    });
   }
 
   function init() {
@@ -153,10 +213,11 @@
       }
 
       if (event.target.closest("[data-update-later]")) {
-        dismissBanner();
+        dismissForVersion(pendingVersion || getStoredVersion());
       }
     });
 
+    watchOtherTabs();
     cleanRefreshParam();
     checkForUpdate().catch(() => {});
   }
