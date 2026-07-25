@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const CONTENT = path.join(ROOT, "content");
+const BUILD_VERSION = new Date().toISOString();
 
 function readJson(rel) {
   return JSON.parse(fs.readFileSync(path.join(CONTENT, rel), "utf8"));
@@ -66,7 +67,13 @@ function renderCircuitBrand(variant = "hero") {
   </span>`;
 }
 
-function pageShell({ depth, title, brand, body, scripts = ["theme.js", "nav.js"], description = "" }) {
+function writeVersionFile() {
+  const full = path.join(ROOT, "version.json");
+  fs.writeFileSync(full, `${JSON.stringify({ version: BUILD_VERSION }, null, 2)}\n`, "utf8");
+  console.log("  ✓", "version.json");
+}
+
+function pageShell({ depth, title, brand, body, scripts = ["theme.js", "update.js", "nav.js"], description = "" }) {
   const site = readJson("site.json");
   const p = prefixFor(depth);
   const scriptTags = scripts.map((s) => `  <script src="${p}js/${s}"></script>`).join("\n");
@@ -84,6 +91,7 @@ function pageShell({ depth, title, brand, body, scripts = ["theme.js", "nav.js"]
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="${metaDescription}">
+  <meta name="site-version" content="${escapeHtml(BUILD_VERSION)}">
   <title>${safeTitle} — ${escapeHtml(site.titleSuffix)}</title>
   <link rel="icon" href="${p}assets/favicon.svg" type="image/svg+xml">
 ${themeInit}
@@ -92,6 +100,7 @@ ${fontsLink}
 </head>
 <body>
   <div id="site-nav" data-brand="${safeBrand}"></div>
+  <div id="site-update-slot" class="site-update-slot" hidden></div>
 ${body}
   <footer class="site-footer">
     <p>${site.footerText}</p>
@@ -249,7 +258,7 @@ ${page.showInformacoesImportantes ? "\n" + renderInformacoesImportantes() : ""}
     title: page.pageTitle,
     brand: page.brand,
     body,
-    scripts: ["theme.js", "nav.js", "home-hero.js"],
+    scripts: ["theme.js", "update.js", "nav.js", "home-hero.js"],
   }));
 }
 
@@ -307,7 +316,7 @@ ${page.semesterLinks.map((l) => `        <a href="${l.href}">${l.label}</a>`).jo
 
   writeHtml(
     "programacao-reuniao/index.html",
-    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "nav.js", "subnav.js"] })
+    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "update.js", "nav.js", "subnav.js"] })
   );
 }
 
@@ -332,7 +341,7 @@ ${blocks}
 
   writeHtml(
     `programacao-reuniao/${out}`,
-    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "nav.js", "subnav.js"] })
+    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "update.js", "nav.js", "subnav.js"] })
   );
 }
 
@@ -357,7 +366,7 @@ ${page.showInformacoesImportantes ? "\n" + renderInformacoesImportantes() : ""}
 
   writeHtml(
     "itinerario/index.html",
-    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "nav.js", "subnav.js"] })
+    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "update.js", "nav.js", "subnav.js"] })
   );
 }
 
@@ -379,7 +388,7 @@ ${renderSchedule(page.months)}
 
   writeHtml(
     `itinerario/${out}`,
-    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "nav.js", "subnav.js"] })
+    pageShell({ depth: 1, title: page.pageTitle, brand: page.brand, body, scripts: ["theme.js", "update.js", "nav.js", "subnav.js"] })
   );
 }
 
@@ -575,6 +584,7 @@ function build404() {
 }
 
 console.log("Gerando site a partir de content/...\n");
+writeVersionFile();
 buildHome();
 buildVisita();
 buildProgramacaoIndex();
