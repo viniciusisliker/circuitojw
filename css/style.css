@@ -665,10 +665,6 @@ body.nav-open {
   }
 
   .site-nav__brand {
-    justify-content: center;
-  }
-
-  .site-nav__brand:has(.circuit-brand--nav) {
     display: none;
   }
 

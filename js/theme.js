@@ -45,12 +45,6 @@
   }
 
   function init() {
-    document.addEventListener("click", (event) => {
-      const btn = event.target.closest("[data-theme-toggle]");
-      if (!btn) return;
-      event.preventDefault();
-      toggleTheme();
-    });
     refresh();
   }
 
